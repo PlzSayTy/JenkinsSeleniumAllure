@@ -1,7 +1,8 @@
 package ru.Steps;
 
+import io.qameta.allure.Step;
 import ru.Pages.MainPage;
-import ru.yandex.qatools.allure.annotations.Step;
+
 
 public class MainPageStep {
     @Step("Выполнено наведение на Ипотека и выбор Ипотека на готовое жилье")

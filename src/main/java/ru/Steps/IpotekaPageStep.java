@@ -1,10 +1,10 @@
 package ru.Steps;
 
+import io.qameta.allure.Step;
 import ru.Pages.IpotekaPage;
-import ru.yandex.qatools.allure.annotations.Step;
 
 public class IpotekaPageStep {
-    @Step ("выполняется смена фрейма")
+    @Step("выполняется смена фрейма")
     public void changeFrame(){
         new IpotekaPage().changeFrame();
     }

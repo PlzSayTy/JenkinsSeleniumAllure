@@ -27,7 +27,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <browserName>ass</browserName>
     </properties>
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
@@ -35,7 +34,6 @@
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
         </dependency>
-
         <dependency>
 
             <groupId>io.cucumber</groupId>
@@ -87,31 +85,31 @@
             <version>2.3.0</version>
 
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.5.2</version>
+            <version>5.6.0</version>
         </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>3.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-java-annotations</artifactId>
-            <version>1.5.2</version>
-        </dependency>
+
+
     </dependencies>
 
 
 
     <build>
         <testResources><testResource><directory>src/test/resources</directory>
-        <filtering>true</filtering></testResource></testResources>
-        <resources><resource><directory>target/generated-test-sources/resources</directory>
-            <filtering>true</filtering></resource></resources>
 
+            <filtering>true</filtering></testResource></testResources>
+        <resources><resource><directory>target/generated-test-sources/resources</directory>
+
+            <filtering>true</filtering></resource></resources>
         <plugins>
 
             <plugin>
@@ -140,9 +138,8 @@
 
                         -Dcucumber.options="--tags ${TAGS}"
 
-
-
                     </argLine>
+
                     <systemProperties>
 
                         <property>
@@ -152,7 +149,6 @@
                             <value>target/allure-results</value>
 
                         </property>
-
 
 
 
@@ -203,7 +199,6 @@
             </plugin>
 
         </plugins>
-
 
     </build>
 

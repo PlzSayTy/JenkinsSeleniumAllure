@@ -34,10 +34,12 @@ public class BaseStep {
                     driver = new FirefoxDriver();
                     break;
                 case "chrome":
+                    System.out.println("case = chrome");
                     System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
                     driver = new ChromeDriver();
                     break;
                 default:
+                    System.out.println("case = default(chrome)");
                     System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
                     driver = new ChromeDriver();
             }

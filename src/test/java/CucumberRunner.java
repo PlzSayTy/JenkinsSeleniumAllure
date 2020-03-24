@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
     @RunWith(Cucumber.class)
     @CucumberOptions(
             features = {"src/test/resources/"},
-            glue = {"ru"},
+            glue = {"ru.Steps"},
             plugin = {
                     "io.qameta.allure.cucumber3jvm.AllureCucumber3Jvm",
             }
