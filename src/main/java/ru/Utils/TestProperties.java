@@ -19,7 +19,7 @@ public class TestProperties {
 
         try {
 
-            properties.load(new FileInputStream(new File("./" + System.getProperty("env", "test") + ".properties")));
+            properties.load(new FileInputStream(new File("./src/test/resources/" + System.getProperty("env", "test") + ".properties")));
 
         } catch (IOException e) {
 

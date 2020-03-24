@@ -2,6 +2,7 @@ package ru.Steps;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.Utils.TestProperties;
 import org.openqa.selenium.OutputType;
@@ -9,8 +10,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.yandex.qatools.allure.annotations.Attachment;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -18,12 +20,15 @@ public class BaseStep {
         protected static WebDriver driver;
         protected static String baseUrl;
         public static Properties properties = TestProperties.getInstance().getProperties();
+        public static Properties propertiesOfBrowser = new Properties();
         public static WebDriver getDriver(){
             return driver;
         }
         @Before
         public static void setUp() throws Exception {
-            switch (properties.getProperty("browser")){
+            propertiesOfBrowser.load(new FileInputStream(new File("./target/test-classes/" + System.getProperty("browser", "browser") + ".properties")));
+            System.out.println(propertiesOfBrowser.getProperty("browser"));
+            switch (propertiesOfBrowser.getProperty("browser")){
                 case "firefox":
                     System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver"));
                     driver = new FirefoxDriver();

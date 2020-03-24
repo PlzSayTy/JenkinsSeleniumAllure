@@ -1,11 +1,6 @@
 package ru.Steps;
-
-import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import ru.Pages.IpotekaPage;
-import ru.yandex.qatools.allure.annotations.Step;
-
 public class ScenarioSteps {
     MainPageStep mainPageStep = new MainPageStep();
     IpotekaPageStep ipotekaPageStep = new IpotekaPageStep();
