@@ -1,5 +1,6 @@
 package ru.Steps;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import io.qameta.allure.Attachment;
@@ -49,12 +50,13 @@ public class BaseStep {
             driver.manage().window().maximize();
             driver.get(baseUrl);
         }
+    @Attachment(value = "Page screenshot", type = "image/png")
+    public static byte[] saveScreenshot() {
+        return ((TakesScreenshot) BaseStep.getDriver()).getScreenshotAs(OutputType.BYTES);
+    }
         @After
-        public static void tearDown() throws Exception {
+        public static void tearDown(Scenario sc) throws Exception {
+            if(sc.isFailed()) saveScreenshot();
             driver.quit();
-        }
-        @Attachment(type = "image/png", value = "Screenshot")
-        public static byte[] takeScreenshot() {
-            return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         }
 }

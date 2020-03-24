@@ -1,6 +1,9 @@
 package ru.Steps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import ru.Steps.IpotekaPageStep;
+import ru.Steps.MainPageStep;
+
 public class ScenarioSteps {
     MainPageStep mainPageStep = new MainPageStep();
     IpotekaPageStep ipotekaPageStep = new IpotekaPageStep();

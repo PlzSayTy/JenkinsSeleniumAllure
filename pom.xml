@@ -25,7 +25,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <browserName>ass</browserName>
+
+        <browserName>nameOfBrowser</browserName>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -97,6 +98,12 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit4</artifactId>
+            <version>2.6.0</version>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>
@@ -105,10 +112,8 @@
 
     <build>
         <testResources><testResource><directory>src/test/resources</directory>
-
             <filtering>true</filtering></testResource></testResources>
         <resources><resource><directory>target/generated-test-sources/resources</directory>
-
             <filtering>true</filtering></resource></resources>
         <plugins>
 
@@ -153,6 +158,17 @@
 
 
                     </systemProperties>
+                    <properties>
+
+                        <property>
+
+                            <name>listener</name>
+
+                            <value>ru.Glue.AllureListener</value>
+
+                        </property>
+
+                    </properties>
 
                 </configuration>
 
@@ -179,6 +195,23 @@
                 <artifactId>allure-maven</artifactId>
 
                 <version>${allure-maven-plugin.version}</version>
+                <executions>
+
+                    <execution>
+
+                        <id>allure-report</id>
+
+                        <phase>post-integration-test</phase>
+
+                        <goals>
+
+                            <goal>report</goal>
+
+                        </goals>
+
+                    </execution>
+
+                </executions>
 
             </plugin>
 
