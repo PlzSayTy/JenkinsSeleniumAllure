@@ -5,6 +5,9 @@ import cucumber.api.java.ru.Когда;
 
 import cucumber.api.java.ru.Тогда;
 import io.cucumber.datatable.DataTable;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import ru.Steps.IpotekaPageStep;
 import ru.Steps.MainPageStep;
 
