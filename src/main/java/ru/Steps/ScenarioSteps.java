@@ -1,8 +1,14 @@
 package ru.Steps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.java.ru.Когда;
+
+import cucumber.api.java.ru.Тогда;
+import io.cucumber.datatable.DataTable;
 import ru.Steps.IpotekaPageStep;
 import ru.Steps.MainPageStep;
+
+import java.util.Map;
 
 public class ScenarioSteps {
     MainPageStep mainPageStep = new MainPageStep();
@@ -15,61 +21,26 @@ public class ScenarioSteps {
     public void changeFrame(){
         ipotekaPageStep.changeFrame();
     }
-    @When ("Заполняется поле Стоимость недвижимости")
-    public void fullFillCost(){
-        ipotekaPageStep.fullFillCost();
+    @When("^заполняются поля:$")
+    public void заполняются_поля(DataTable fields){
+        Map<String,String> dataMap = fields.asMap(String.class, String.class);
+        dataMap.forEach((field, value) -> { ipotekaPageStep.fullFill(field, value); });
     }
-    @Then("Делаю лишнюю проверку из за лагающей менюшки")
-    public void uselessChecking(){
-        ipotekaPageStep.uselessCheck();
+    @Then("^Выполнено нажатие на кнопку =\"(.+)\"$")
+    public void pressCanConfirm(String buttonName){
+        ipotekaPageStep.pressChosen(buttonName);
     }
-    @Then ("Проверяется изменение полей справа 1")
-    public void firstCheck(){
-        ipotekaPageStep.firstCheck();
+    @Then("^Выполнено нажатие на кнопку -\"(.+)\"$")
+    public void pressCardKeeper(String buttonName){
+        ipotekaPageStep.pressChosen(buttonName);
     }
-    @When("Заполняется поле Первоначальный взнос")
-    public void fullFillFirtPay(){
-        ipotekaPageStep.fullFillFirtPay();
+    @Then("^Выполнено нажатие на кнопку ==\"(.+)\"$")
+    public void pressYoungFamily(String buttonName){
+        ipotekaPageStep.pressChosen(buttonName);
     }
-    @Then ("Проверяется изменение полей справа 2")
-    public void secondCheck(){
-        ipotekaPageStep.secondCheck();
-    }
-    @When ("Заполняется поле Срок")
-    public void fullFillTime(){
-        ipotekaPageStep.fullFillTime();
-    }
-    @Then ("Проверяется изменение полей справа 3")
-    public void thirdCheck(){
-        ipotekaPageStep.thirdCheck();
-    }
-    @When ("Выключаю зарплатныю карту Сбербанка")
-    public void turnOffSberCard(){
-        ipotekaPageStep.turnOffSberCard();
-    }
-    @Then ("Проверяется изменение полей справа 4")
-    public void fourthCheck(){
-        ipotekaPageStep.fourthCheck();
-    }
-    @When ("Выключаю возможность подтверждения")
-    public void turnPosibilityOff(){
-        ipotekaPageStep.turnPosibilityOff();
-    }
-    @Then ("Проверяется изменение полей справа 5")
-    public void fivethCheck(){
-        ipotekaPageStep.fivethCheck();
-    }
-    @When ("Включаю молодую семью")
-    public void turnYoungFamilyOn(){
-        ipotekaPageStep.turnYoungFamilyOn();
-    }
-    @Then ("Проверяется изменение полей справа 6")
-    public void sixsCheck(){
-        ipotekaPageStep.sixsCheck();
-    }
-    @When ("Включаю возможность подтвердить доход")
-    public void tunrPosibilityOn(){
-        ipotekaPageStep.turnPosibilityOff();
+    @Then("^Выполнено нажатие на кнопку --\"(.+)\"$")
+    public void pressCanConfirmOneMore(String buttonName){
+        ipotekaPageStep.pressChosen(buttonName);
     }
     @Then("Итоговая проверка по всем пунктам справа")
     public void lastChecklist(){
